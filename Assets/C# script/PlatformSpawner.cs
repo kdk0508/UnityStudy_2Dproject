@@ -37,6 +37,12 @@ public class PlatformSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameManager.instance.isGameOver()) { return; }
+
+        if(Time.time >= lastSpawnTme + timeBetSpawn)
+        {
+            lastSpawnTme = Time.time;
+            timeBetSpawn = Random.Range(timeBetMin, timeBetMax);
+        }
     }
 }
